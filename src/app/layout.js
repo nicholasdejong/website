@@ -1,7 +1,6 @@
-import { Inter } from "next/font/google";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Nicholas de Jong",
@@ -14,7 +13,15 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body>
+        <Header />
+        <Child>{children}</Child>
+        <Footer />
+      </body>
     </html>
   );
+}
+
+function Child({ children }) {
+  return <>{children}</>
 }
