@@ -1,10 +1,28 @@
 .button {
-    width: 200px;
-    height: 60px;
+    width: 250px;
+    height: 80px;
     font-size: 30px;
     text-transform: uppercase;
     font-weight: 600;
     background-color: black;
     border: 2px solid white;
     color: white;
+    transition: width .2s, height .2s, font-size .2s;
+}
+
+.grow {
+    width: 270px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (hover:hover) {
+    .button:hover {
+        width: 270px;
+        height: 85px;
+        font-size: 32px;
+        cursor: pointer;
+    }
 }
