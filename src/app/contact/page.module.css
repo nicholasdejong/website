@@ -1,0 +1,11 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.article {
+    flex-grow: 2;
+    background-color: green;
+    text-align: center;
+}
