@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 import 'dotenv/config';
 
 const transporter = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
         user: process.env.FROM,
         pass: process.env.PASS
@@ -31,18 +32,22 @@ export default function handler(req, res) {
                 subject: `[Website]: ${req.body.subject}`,
                 text: 
                `[Name]: ${req.body.name}
-                [Email]: ${req.body.email}
-                [Message]: ${req.body.message}`
+[Email]: ${req.body.email}
+[Message]: ${req.body.message}`
             }
 
             transporter.sendMail(mailOptions, (err, info) => {
                 if (err) {
-                    res.redirect(500, '/submitted?failed');
                     console.log(`Error sending mail: ${err}`);
+                    stop = true;
                 } else {
                     console.log(`Email sent: ${info.response}`);
                 }
             });
+            if (stop) {
+                res.redirect(500, '/submitted?failed=true');
+                break;
+            };
 
             res.redirect('/submitted');
             break;
