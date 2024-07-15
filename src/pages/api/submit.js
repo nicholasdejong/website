@@ -1,3 +1,13 @@
+import nodemailer from 'nodemailer';
+import 'dotenv/config';
+
+const transporter = nodemailer.createTransport({
+    auth: {
+        user: process.env.FROM,
+        pass: process.env.PASS
+    }
+});
+
 export default function handler(req, res) {
     switch (req.method) {
         case 'POST': {
@@ -12,9 +22,28 @@ export default function handler(req, res) {
                 }
             }
 
-            // TODO: send email with details
-
             if (stop) break;
+
+            // I use two personal emails to simulate their sending an email.
+            let mailOptions = {
+                from: process.env.FROM,
+                to: process.env.TO,
+                subject: `[Website]: ${req.body.subject}`,
+                text: 
+               `[Name]: ${req.body.name}
+                [Email]: ${req.body.email}
+                [Message]: ${req.body.message}`
+            }
+
+            transporter.sendMail(mailOptions, (err, info) => {
+                if (err) {
+                    res.redirect(500, '/submitted?failed');
+                    console.log(`Error sending mail: ${err}`);
+                } else {
+                    console.log(`Email sent: ${info.response}`);
+                }
+            });
+
             res.redirect('/submitted');
             break;
         }
