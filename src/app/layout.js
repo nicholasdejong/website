@@ -1,5 +1,3 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 import "./globals.css";
 
 export const metadata = {
@@ -13,15 +11,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body>
-        <Header />
-        <Child>{children}</Child>
-        <Footer />
-      </body>
+      {children}
     </html>
   );
-}
-
-function Child({ children }) {
-  return <>{children}</>
 }
