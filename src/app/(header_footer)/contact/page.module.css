@@ -16,14 +16,13 @@
 .heading {
     font-size: 40px;
     margin: 20px 0;
-    /* -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black; */
     color: white;
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .form {
+    width: 80vw;
     background-color: aqua;
     display: flex;
     flex-direction: column;
@@ -31,28 +30,42 @@
     gap: 10px;
 }
 
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .input {
-    width: 250px;
-    height: 35px;
+    box-sizing: border-box;
+    width: 80vw;
+    height: 50px;
     border: 2px solid black;
     padding-left: 8px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .message {
-    width: 250px;
-    height: 85px;
-    min-height: 85px;
+    box-sizing: border-box;
+    width: 80vw;
+    min-height: 25vh;
     resize: vertical;
     border: 2px solid black;
     padding-left: 8px;
+    font-size: 20px;
 }
 
 .submit {
     background-color: black;
     border: 2px solid white;
     color: white;
-    width: 160px;
+    width: 80vw;
     height: 50px;
     font-size: 30px;
     text-transform: uppercase;
@@ -62,5 +75,41 @@
 @media (hover:hover) {
     .submit:hover {
         cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 1200px), (orientation: landscape) {
+    .textWrapper {
+        flex-direction: row;
+        background-color: blue;
+        width: 80vw;
+        gap: 5px;
+    }
+
+    .inputWrapper {
+        align-items: center;
+        background-color: lime;
+        flex-grow: 2;
+    }
+
+    .input {
+        width: 100%;
+        height: 10vh;
+        font-size: 5vh;
+    }
+
+    .message {
+        width: 40vw;
+        font-size: 3vh;
+    }
+
+    .submit {
+        height: 15vh;
+        font-size: 5vh;
+    }
+
+    .heading {
+        font-size: 10vh;
+        margin-bottom: 0;
     }
 }
