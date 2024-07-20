@@ -8,6 +8,10 @@
     display: none;
 }
 
+.logo, .n {
+    height: 100px;
+}
+
 .icons {
     display: flex;
     width: 150px;
